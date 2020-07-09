@@ -61,6 +61,10 @@ A probability sample is a sample in which every unit in the population has a cha
     * Ration scales, have inherent zero
 * continuous vs. discrete variables
 
+
+### 
+
+
 ## Data Analysis- Summarizing
 * Distribution:
     * Skewness -
@@ -164,3 +168,158 @@ Equations that transform input to output
 * Supervised Learning
 * Unsupervised learning
 * Reinforcement Learning
+## Linear Regression -- Cost Functions and Gradient Descent
+* Regression: y = f(x) = mx + b
+* How to find most appropriate values of m b? -> Least Squared Regression
+    * Loss Function: MSE 
+    ![equation](https://latex.codecogs.com/gif.latex?MSE(m,&space;b)&space;=&space;\frac{1}{N}\sum_{i=1}^{N}(y_{i}-&space;\hat{y}_{i})^{2})
+    * Gradient Descent to minimize cost loss function
+## Plolynomial and Multivariate Linear Regression
+* ![equation](https://latex.codecogs.com/gif.latex?Polynomial&space;Regression:&space;y&space;=&space;m_{1}x&space;&plus;&space;m_{2}x^{2}&plus;&space;m_{3}x^{3}&space;&plus;...&plus;&plus;&space;m_{n}x^{n}&plus;b)
+* ![equation](https://latex.codecogs.com/gif.latex?Multivariate&space;Linear&space;Regression:&space;y&space;=&space;f(x)&space;=&space;w_{1}x_{1}&space;&plus;&space;w_{2}x_{2}&plus;&space;w_{3}x_{3}&space;&plus;...&plus;w_{n}x_{n}&plus;b=\sum_{i=1}^{n}w_{i}x_{i})
+
+## Logistic Regression
+### What is Logistic Regression?
+In statistics, the logistic model (or logit model) is used to model the probability of a certain class or event existing such as pass/fail, win/lose, alive/dead or healthy/sick. This can be extended to model several classes of events such as determining whether an image contains a cat, dog, lion, etc. Each object being detected in the image would be assigned a probability between 0 and 1, with a sum of one.
+### Functions
+* Linear Regression: ![equation](https://latex.codecogs.com/gif.latex?f&space;=&space;\mathbf{w}^{\boldsymbol{T}}\boldsymbol{x})
+* Logistic regression is the transformation of a linear function with a logistic sigmoid
+    * sigmoid: ![equation](https://latex.codecogs.com/gif.latex?g(z)&space;=&space;\frac{1}{1&plus;e^{-z}})
+    * Logistic function: ![equation](https://latex.codecogs.com/gif.latex?f(x,w)&space;=&space;\sigma&space;(\boldsymbol{w}^{\boldsymbol{T}}\boldsymbol{x})=\frac{1}{1&plus;e^{-\boldsymbol{w}^{\boldsymbol{T}}\boldsymbol{x}}})
+    * Decision Boundary
+    * Gradient Descent to minimize functions
+### Naive Bayes
+
+### Support Vector Machines (classifier and regressor)
+* What is SVM?
+ a support-vector machine constructs a hyperplane or set of hyperplanes in a high- or infinite-dimensional space, which can be used for classification, regression, or other tasks like outliers detection. Intuitively, a good separation is achieved by the hyperplane that has the largest distance to the nearest training-data point of any class (so-called functional margin), since in general the larger the margin, the lower the generalization error of the classifier
+* Optimal Hyperplane
+    * The goal of SVMs is to maximize the margin between the data points of each classes.  The plane or decision boundary is called hyperplane. Points of each class are seperated by hyperplane.
+    * Hyperplane can be in multiple dimensions.
+* Support Vectors
+    * Support Vectors are the points that reside closest to the hyperplane
+
+* SVM Classification model
+    * SVMs take output of linear function and for values >1 as one class; values <-1 the other class
+    * Non-linear data
+        * Uses Kernel to take low dimensional input space to higher dimensional space
+* Pros of SVM
+    * It works really well with a clear margin of separation
+    * It is effective in high dimensional spaces.
+    * It is effective in cases where the number of dimensions is greater than the number of samples.
+    * It uses a subset of training points in the decision function (called support vectors), so it is also memory efficient.
+* Cons of SVM
+    * It doesn’t perform well when we have large data set because the required training time is higher
+    * It also doesn’t perform very well, when the data set has more noise i.e. target classes are overlapping
+    * SVM doesn’t directly provide probability estimates, these are calculated using an expensive five-fold cross-validation. It is included in the related SVC method of Python scikit-learn library.
+### Decision Trees 
+* Multi-class decision tree, need to find a way to define 'splits'
+* Find the root split
+* Define and evluate splits -- Gini Gain 
+    * Gini Gain (impurity) for the whole dataset
+    * probablity of incorrectly classifying a random selected element in the dataset
+    * ![equation](https://latex.codecogs.com/gif.latex?G_{initial}&space;=&space;\sum_{i=1}^{C}p_{i}(1-p_{i}))
+        * C: number of classes
+        * pi: probability of randomly choosing element of class i
+    * GLeft: ![equation](https://latex.codecogs.com/gif.latex?G_{Left}&space;=&space;\sum_{i=1}^{C}p_{i}(1-p_{i}))
+    * GRight: ![Equation](https://latex.codecogs.com/gif.latex?G_{Right}&space;=&space;\sum_{i=1}^{C}p_{i}(1-p_{i}))
+    * Quality of the split = weighting the impurity of each branch by the number of elements it contains
+    * GiniGain of the split = Ginitial - Quality of Split that is the total impurity removed with this split
+    * Calculate GiniGain for each split and use with the highest GiniGain
+    * GiniGain for multiple classes
+    * Calculating Gini Gains is how Decision Tree is constructed
+
+
+### Random Forest
+* What is Random Forest?
+The output of multiple decision tree classifiers
+* Train decision tress on n set of samples and repeat t times
+* find the most common output (majority vote) or average (for regression) --> Bagging/Boostrapping
+
+### KNN
+* Lazy learner. do not have a training phase.
+* Comput classification using training data (can be slow)
+* Non-parametric algorithm
+* Choosing K
+    * k=1 - high variance
+    * k ↑ - variance decreased, bias increase
+* Distance Metrics
+    * Euclidean distance
+    * Cosine Distance
+* Pros of KNN
+    * The algorithm is simple and easy to implement.
+    * There’s no need to build a model, tune several parameters, or make additional assumptions.
+    * The algorithm is versatile. It can be used for classification, regression, and search (as we will see in the next section).
+* Cons of KNN
+    * Every time we wish to calculate new input, need to load all training data, then calculate distane to every point. 
+    * computing extensively and requires high memory
+    * To make KNN work well, need to normalize or scale input data
+    * Datasets with a large number of features (i.e. dimensions) will impact KNN performance. To avoid ove
+
+### Model Evaluation Metrics
+* Classification -- 
+    * Accuracy
+    * Confusion Matrix
+    * Precision
+    * Recall
+    * F1-Score: weighted avrage of Precision and Recall
+        * Useful in case of class imbalance
+    * ROC
+        * ROC: Receiver Operating Characteristics
+        * goodness of model in distinguishing two classes
+        * TPR vs. FPR (Recall vs. 1 - Precision)
+    * AUC (Area under the curve)
+        * Created using different thresholds in classifier to get TPR and FPR
+
+### Overfitting - Regularization, Generalization, Outliners
+* Overfitting vs. Underfitting (Variance vs. bias)
+* How to avoid overfitting?
+    * Test/Evaluatation
+    * Regularization: reduce model complexity
+        * ML:
+            * L1 and L2 Regularization
+            Large weights or gradients manifest as abrupt changes in our model’s decision boundary. By penalizing, we a really making them smaller. 
+            * cross validation
+        * Deep Learning
+            * Early Stopping
+            * Drop out
+            * Dataset Augmentation
+
+
+### Neural Networks and Deep learning
+#### Feed Forward
+
+#### CNN
+* Why CNN needed?
+    * Neural Networks don't scale well into image data. For a color image 64px by 64px. Input size of NN will be 64 * 64 * 3 = 12288
+    * Image data -> consists of patterns and correlated inputs
+* How CNN works?
+Input image → Convolution + ReLU → Polling → Convolution + ReLU → Pooling → Fully connected layer → Output layer
+* What is convolution?
+    * process of combining two functions to produce a third  function
+    * third function is called feature map
+    * using a filter or kernel that is applied to the input
+    * Sliding the filter or kernel over input image
+#### RNN
+* What is RNN?
+    * Feed Forward NN has no concept of time/sequence, each calculation is done only on the current inputs
+    * Recurrent Networks take as their input not just the current input, but also what have preceived previously in time.
+    * Two inputs: the present input and the past inputs
+* Hidden state vector (h)
+    * RNN influence not just by weights applied on inputs like a regular NN, but also by a 'hidden state vector (h)' representing the context based on prior inputs/outputs
+
+* Pros of RNN
+    * Successful in speech recognition, language modeling, image captioning
+* Cons of RNN
+    * Memory vanishing gradient and exploading gradient
+#### LSTM
+* What is LSTM networks?
+    * a type of RNN
+    * with a memory unit (cell)
+    * capable of learning long-term dependencies
+
+
+### Bagging
+
+
+### Boosting
