@@ -568,16 +568,25 @@ NLP in businesses
 * Normalization
     * Case Normalization
     * Stop Word Removal
-
-
-* Lemmatizing/Stemming
-
-#### Predictions
-
-
-#### Sentiment Analysis
-
-
-#### Summarization
-
-#### text classification
+    common words that do not act additional information or predictive value due to how common they are in normal text. 
+    * Removing Punctuation and special symbos
+    * Lemmatizing/Stemming
+        * reduce inflection forms to normalize words with the same lemma.
+        * Lemmatising does this by considering the context of the word while stemming does not. 
+        * most current lemmatizers or stemmer libraries are not highly accurate. 
+* TF_IDF Vectorizer(Term Frequency - Inverse Document Frequency)
+    * account the importance of each item in a document/text
+    * TF(i,j) = # of times term i is in document j /  total # of terms in document
+    * IDF(i) = ln(total # of documents / # of documents containing term i)
+    * TF-IDF(i,j) = TF x IDF
+* Word2Vec: efficient estimation of word representation in vector space
+    * Word2vec has been pre-trained over large corpora
+    * It uses an unsupervised learning method to determine semantic and syntactic meaning from word cooccurrence, which is then used to construct vector representations for every word in the vocabulary. 
+    * Two model architectures are used to train word2vec:
+    separate the data into observations of target words and their context
+        * continuous bag of words
+        * skip gram
+    * Both use a context window to determine the contextually similar words
+    * assumption: words which are used and occur in the same contexts tend to purport similar meaning
+    * The context window of Word2Vec is dynamic which has a max size
+    * The context is samples from the max window size with a probability of 1/d where d is the distance between the word to target. 
