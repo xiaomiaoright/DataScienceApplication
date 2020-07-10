@@ -287,8 +287,6 @@ The output of multiple decision tree classifiers
 
 
 ### Neural Networks and Deep learning
-#### Feed Forward
-
 #### CNN
 * Why CNN needed?
     * Neural Networks don't scale well into image data. For a color image 64px by 64px. Input size of NN will be 64 * 64 * 3 = 12288
@@ -317,9 +315,149 @@ Input image → Convolution + ReLU → Polling → Convolution + ReLU → Poolin
     * a type of RNN
     * with a memory unit (cell)
     * capable of learning long-term dependencies
+#### Feed Forward Propagation
+* Universal Approximation Theorem
+Mathematically speaking, any neural network architecture aims at finding any mathematical function y= f(x) that can map attributes(x) to output(y). The accuracy of this function i.e. mapping differs depending on the distribution of the dataset and the architecture of the network employed. The function f(x) can be arbitrarily complex. The Univeral Approximation Theorem tells us that Neural Networks has a kind of universality i.e. no matter what f(x) is, there is a network that can approximately approach the result and do the job! This result holds for any number of inputs and outputs.
 
+* Activation Function
+    * ![equation](https://latex.codecogs.com/gif.latex?Output&space;=&space;Activiation(w_{i}x_{i}&space;&plus;&space;b))
+    * ReLU (Rectified Linear Unit)
+        * ![equation](https://latex.codecogs.com/gif.latex?f(x)&space;=&space;max(0,x))
+    * Why?
+        * Most ML algorithms find non linear data extremely hard to model.
+        * advantage of deep learning is the ability to understand nonlinear models
+    * Typles of Activation function
+        * Sigmoid
+        * Hyperbolic Tangent
+        * ReLU
+        * Radial Basis Function
+    * Bias
+        * neuron with a trainable constant value
+        * shift activation function
+* What is Deep?
+    * Deep refers to the number of hidden layers
+    * Deeper → nonlinear mapping better
+    * But could overfit and overly long training time
+
+* Loss function, Gradient Descent, Backpropagation
+    * How to find the weights for DL models?
+        * with loss function, adjust weights by gredient descent, backpropagation 
+    * Type of Loss functions
+        * L1
+        * L2
+        * MSE
+        * Cross Entropy ( in binary classification)
+        * Hinge Loss
+        * MAE
+    * Backpropagation
+        * determine which direction the weight should move
+        * Epoch or Iteration
+        * Gradient Descent -- optimization
+        * Chain rule
+        * Learning Rate
+    * Gradient Descent
+        * Type of GD
+            * Naive Gradient Descent 
+                * Compute expensive/slow
+                * requires exposure to the entire dataset, then udpates the gradient
+            * Stochastic Gradient Descent (SGD)
+                * updates after every input sample
+                * results in noisy or fluctuating loss outputs
+                * can be slow
+            * Mini Batch Gradient Descent
+                * take a batch of input samples 
+                * update gradient after the batch is processed
+                * faster convergence to global minima (faster training)
+    * Type of Regularization
+        * L2 and L1 Regularization
+        * Corss validation
+        * Early Stopping
+        * Drop out
+        * Dataset augmentation
+    * Epochs Iterations Batch Size
+        * Epoch
+            * An Epoch occurs when the full set of our training data is passed/forward propagated and then backpropagated through our neural network. through our neural network. 
+        * Batches
+            * Unless with RAM, can't simply pass all training data to NN in training.
+            * Split dataset into segments (batches)
+            * Batch size is number of training samples used in each batch
+            * Example:
+                * 1000 sample data
+                * Batch size of 100
+                * In training, take 100 samples and use it forward/backward pass, update model weights
+                * if batch size is 1. → Stochastic Gradient Descent
+        * Iterations
+            * Iterations are the number of batches needed to complete one Epoch (full train dataset)
+            * Example: 1000 training samples, batch size = 100 → Need 10 iterations to complete one epoch
+* Model Evaluation: Loss and Accuracy
+    * Accuracy:
+    * Loss:
+* AB Testing
+    * Steps:
+        1. Define Hypothesis
+        2. How to evaluate experient?
+        3. How much of the effect is desired?
+        4. How many test subjects needed?
+    * Hypothesis
+        * H0: There is no difference between A and B (Difference is only from randomness)
+        * Ha: B is better than A (Difference has a causation)
+    * Evaluation Metric
 
 ### Bagging
 
 
 ### Boosting
+
+### Clustering
+    * K-means clustering
+        * How?
+            * choosing k
+            * Assign all the points to the closest cluster centroid
+            * compute the centroid of the newly formed clusters. 
+            * Repeat last two steps until newly formd clusters stoped changing
+        * choosing K: Elbow method and silhouette analysis
+            * Elbow curve
+            * Solhouette Analysis
+                * validating the consistency within clusters of data
+                *  define the mean distance of a point to all other points in its cluster (a(i)) and also define the mean distance to all other points in the closest cluster (b(i)). 
+                * ![equation](https://latex.codecogs.com/gif.latex?s(i)&space;=&space;\frac{b(i)-a(i)}{max(b(i),&space;a(i))})
+                    * if near +1: far away from other clusters
+                    * if near 0: very close and intersecting other clusters
+
+        * Pros
+            * Relatively simple to implement.
+            * Scales to large data sets.
+            * Guarantees convergence.
+            * Can warm-start the positions of centroids.
+            * Easily adapts to new examples.
+            * Generalizes to clusters of different shapes and sizes, such as elliptical clusters. 
+
+        * Cons
+            * We still need to choose K manually
+            * It is dependent on initial values
+            * Can run into problems when clustering varying sizes and density
+            * Sensitive to outliers
+            * Doesn’t scale well with large number of dimensions (can be mitigated by using PCA)
+            * Only works for numeric values, as such categorical values will either have to be translated into some numerical meaning (e.g. high, medium, low can be mapped to 3,2,1 this can’t always work for categories like types of fruit. Alternatively, we can use K-Medians, or K-Modes to alleviate this issue.
+
+    * Agglomerative Hierarchical clustering
+        * How?
+            * Bottom up approach
+            * treat each data point as a single cluster
+            * successively merge or agglomerate pairs of clusters until all clusters have been merged into a single cluster that contains all data points
+            * hierarchy of clusters is represented as a tree or referred as a dendrogram
+            * root vs. leaf
+        * Pros
+            * We don’t need to specify the number of clusters, k
+            * The algorithm is not too sensitive to the choice of distance metric with all of them working equally well in most cases
+            * It works well in uncovering naturally hierarchical data 
+        * Cons
+            * It is quite slow and doesn’t scale well 
+    * Mean shift clustering
+        * Sliding window based algorithm
+        * Locating centroid of each cluster
+        * updating candidates for each center points to be the mean of the points within the sliding window
+        * candidate windows are filtered in a post-processing stage to eliminate near duplicates, forming a final set of center points 
+    * DBSCAN
+        * Similiar to Mean Shift
+    * Expectation-Maximization
