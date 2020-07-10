@@ -590,3 +590,6 @@ NLP in businesses
     * assumption: words which are used and occur in the same contexts tend to purport similar meaning
     * The context window of Word2Vec is dynamic which has a max size
     * The context is samples from the max window size with a probability of 1/d where d is the distance between the word to target. 
+### Reinforcement Learning
+
+# Big Data
