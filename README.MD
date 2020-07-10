@@ -460,4 +460,124 @@ Mathematically speaking, any neural network architecture aims at finding any mat
         * candidate windows are filtered in a post-processing stage to eliminate near duplicates, forming a final set of center points 
     * DBSCAN
         * Similiar to Mean Shift
-    * Expectation-Maximization
+        * Density based cluster algorithm
+        * Pros
+            * No preset K number of clusters needs to be set
+            * It can identify outliers
+            * It can find erratically sized and shaped clusters well 
+        * Cons
+            * It doesn’t perform well when clusters are of varying densities (due to the setting of ε and minPoints for identifying the neighborhood points, as these will vary from cluster to cluster when they have different densities.
+            * High-Dimensional data poses problems when choosing ε
+
+    * Expectation-Maximization Using Gaussian Mixture Model (GMM)
+        * Why?
+            main weaknesses of K-Means: naïve use of the mean value for the cluster center
+        * Gaussian Mixture Models (GMM) allows more flexibility than K-Means by assuming the points are Gaussian Distributed. 
+        * have two parameters to describe the cluster shape, the mean and standard deviation
+        * Pros
+            * GMMs are a lot more flexible in terms of cluster covariance than K-Means
+            * the clusters can take on any ellipse shape, rather than being restricted to circles
+            * Due to the use of probabilities data points can have multiple clusters e.g. a point can have 0.65 probability in being in one cluster and 0.35 in another. 
+        * Cons
+            * Choosing K and scaling to higher dimensions 
+### PAC: Principle Component Analysis
+* What is PCA?
+    * compress dataset dimensions from higher to lower
+    * based on eigenvectors of the variance in dataset
+    * data compression saving loads in processing time, helpful for cluster analysis
+    * PCA find a new set of dimension 
+        * all dimensions are orthogonal: Linearly independent
+        * Ranked according to the variance of data along them. This means the first principal component contains the most information about the data.
+    * Cons:
+        * PCA works only if the observed variables or data linearly correlate
+        * Info will be lost when reducing dimensionality
+        * sensitive to scale, all data should be normalized
+        * Visualization hard to interpret
+### t-SNE t-dsitributed stochastic neighbor embedding
+* what is t-SNE
+    * another dimensionality reduction algorithm, more effective than PCA
+    * Why?
+        * PCA unable to capture non-linear dependencies
+        * PCA has crowding problem caused by dimenionality reduce. 
+        * t-SNE solves this by making optimiztion spread out
+    * t-SNE uses stochastic neighbours
+    * no clear line between which points are neighbors of other points → lack of boundaries
+    * local structure is more important than global structure. allows for a well-balanced dimensionality reduction
+
+## Recommendation Engines
+* Why recomendation system important?
+    * information overload
+    * make selection easier
+### Selection Overview
+* How do we review items
+    * Approach 1: Net score
+        * net score = positive rating - negative rating
+    * Approach 2: Average Rating
+        * Average rating = positive rating / Total rating
+    * Approach 3: Correct Score = Lower bound of Wilson score confidence interval for a Bernoulli parameter
+* Types of Recommendation systems
+    * Collaborative Filtering 
+        * recommend products based on the history of user behaviors
+        * looks at the similarities between users
+        * user to item matrix to find similiar users
+            * Cosine Similarity
+            ![equation](https://latex.codecogs.com/gif.latex?Cosine&space;Similarity(\boldsymbol{A,B})&space;=&space;cos(\boldsymbol{A,B})=\frac{\boldsymbol{A}\cdot&space;\boldsymbol{B}}{\left&space;\|&space;\boldsymbol{A}&space;\right&space;\|\left&space;\|&space;\boldsymbol{B}&space;\right&space;\|})
+            * A and B represent users
+            * Ai, Bi, represent each item user A and B purchased
+        * Cons:
+            * Systems performed poorly when they had many items but comparatively few ratings
+            * Computing similarities between all pairs of users was expensive
+            * User profiles changed quickly and the entire system model had to be recomputed
+            * Sparsity – the number of purchases made by each user is extremely small compared to the number of items that exist.
+            * Cold-start issues – we don’t have anything to recommend to new users as they haven’t made any purchases/reviews/likes yet
+            * How to recommend a new item?
+            * Scalability – the more users grow the larger the computational requirements to calculate distances between them. 
+    * Content-based filtering (item-based)
+        * calculate similarity between items
+        * for systems that have more users than items
+* Latent-Factor methods
+    To solve scalability issues
+    * What and How
+        * create a new and most times a reduced feature space of the original user or item vectors, leading to reduced noise and faster computations in real time
+    * Two methods:
+        * Matrix factorization
+            * Popular used in Netflix Prize Competition
+            * Singular Value Decomposition (SVD)
+                * ![equation](https://latex.codecogs.com/gif.latex?P_{m\times&space;n}&space;=&space;U_{m\times&space;m}\Sigma_{m\times&space;n}V_{n\times&space;n})
+                * U and V are unitary matrixes
+            * Simon Funk's SVD
+                * Issues with SVD
+                    * the way missing values imputed can have an undesirable impact on the item
+                    * Computational complexity for taining can be high when all entries are considered
+                * Solution:
+                    only non-missing entries are considered
+        * Deep learning
+
+### NLP
+NLP in businesses
+    * Translating
+    * Summarizing information
+    * Sentiment Analysis
+    * Chatbots
+    * Information extraction and search
+    * Auto responder and auto complete
+#### Bag of Words Model
+* Tokenization
+    * Tokenization is the process where we take an input string of text and split it up (parse) into individual string elements
+    * It is a vectorization technique that allows to represent words as real numbers
+* Normalization
+    * Case Normalization
+    * Stop Word Removal
+
+
+* Lemmatizing/Stemming
+
+#### Predictions
+
+
+#### Sentiment Analysis
+
+
+#### Summarization
+
+#### text classification
