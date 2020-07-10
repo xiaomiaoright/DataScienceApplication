@@ -119,7 +119,7 @@ Using sampling statistics to estimate population statistics
 ## Probability
 Probability and statistics
     * Rule of probability:
-    for non-mutually exclusive events: ![equation](https://latex.codecogs.com/gif.latex?P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)-P(A\cap&space;B))
+        * for non-mutually exclusive events: ![equation](https://latex.codecogs.com/gif.latex?P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)-P(A\cap&space;B))
     * Permutations: order matters
         * Permutation with repetition: 
         * P without repition: Factorial
@@ -132,7 +132,7 @@ Probability and statistics
     * Conditional probability
     * Independence vs. exclusivity
     * Bayes Theorem
-    ![equation](https://latex.codecogs.com/gif.latex?P(A\cap&space;B)&space;=&space;P(A|B)P(B)&space;=&space;P(B|A)P(A))
+        * ![equation](https://latex.codecogs.com/gif.latex?P(A\cap&space;B)&space;=&space;P(A|B)P(B)&space;=&space;P(B|A)P(A))
 ## Hypothesis testing
 * What is hypothesis testing?
 A statistical hypothesis is an assumption about a population parameter. This assumption may or may not be true. Hypothesis testing refers to the formal procedures used by statisticians to accept or reject statistical hypotheses. The best way to determine whether a statistical hypothesis is true would be to examine the entire population. Since that is often impractical, researchers typically examine a random sample from the population. If sample data are not consistent with the statistical hypothesis, the hypothesis is rejected.
