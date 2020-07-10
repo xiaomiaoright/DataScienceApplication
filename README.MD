@@ -410,36 +410,36 @@ Mathematically speaking, any neural network architecture aims at finding any mat
 ### Boosting
 
 ### Clustering
-    * K-means clustering
-        * How?
-            * choosing k
-            * Assign all the points to the closest cluster centroid
-            * compute the centroid of the newly formed clusters. 
-            * Repeat last two steps until newly formd clusters stoped changing
-        * choosing K: Elbow method and silhouette analysis
-            * Elbow curve
-            * Solhouette Analysis
-                * validating the consistency within clusters of data
-                *  define the mean distance of a point to all other points in its cluster (a(i)) and also define the mean distance to all other points in the closest cluster (b(i)). 
-                * ![equation](https://latex.codecogs.com/gif.latex?s(i)&space;=&space;\frac{b(i)-a(i)}{max(b(i),&space;a(i))})
-                    * if near +1: far away from other clusters
-                    * if near 0: very close and intersecting other clusters
+* K-means clustering
+    * How?
+        * choosing k
+        * Assign all the points to the closest cluster centroid
+        * compute the centroid of the newly formed clusters. 
+        * Repeat last two steps until newly formd clusters stoped changing
+    * choosing K: Elbow method and silhouette analysis
+        * Elbow curve
+        * Solhouette Analysis
+            * validating the consistency within clusters of data
+            *  define the mean distance of a point to all other points in its cluster (a(i)) and also define the mean distance to all other points in the closest cluster (b(i)). 
+            * ![equation](https://latex.codecogs.com/gif.latex?s(i)&space;=&space;\frac{b(i)-a(i)}{max(b(i),&space;a(i))})
+                * if near +1: far away from other clusters
+                * if near 0: very close and intersecting other clusters
 
-        * Pros
-            * Relatively simple to implement.
-            * Scales to large data sets.
-            * Guarantees convergence.
-            * Can warm-start the positions of centroids.
-            * Easily adapts to new examples.
-            * Generalizes to clusters of different shapes and sizes, such as elliptical clusters. 
+    * Pros
+        * Relatively simple to implement.
+        * Scales to large data sets.
+        * Guarantees convergence.
+        * Can warm-start the positions of centroids.
+        * Easily adapts to new examples.
+        * Generalizes to clusters of different shapes and sizes, such as elliptical clusters. 
 
-        * Cons
-            * We still need to choose K manually
-            * It is dependent on initial values
-            * Can run into problems when clustering varying sizes and density
-            * Sensitive to outliers
-            * Doesn’t scale well with large number of dimensions (can be mitigated by using PCA)
-            * Only works for numeric values, as such categorical values will either have to be translated into some numerical meaning (e.g. high, medium, low can be mapped to 3,2,1 this can’t always work for categories like types of fruit. Alternatively, we can use K-Medians, or K-Modes to alleviate this issue.
+    * Cons
+        * We still need to choose K manually
+        * It is dependent on initial values
+        * Can run into problems when clustering varying sizes and density
+        * Sensitive to outliers
+        * Doesn’t scale well with large number of dimensions (can be mitigated by using PCA)
+        * Only works for numeric values, as such categorical values will either have to be translated into some numerical meaning (e.g. high, medium, low can be mapped to 3,2,1 this can’t always work for categories like types of fruit. Alternatively, we can use K-Medians, or K-Modes to alleviate this issue.
 
     * Agglomerative Hierarchical clustering
         * How?
