@@ -117,7 +117,7 @@ Using sampling statistics to estimate population statistics
     * ![equation](https://latex.codecogs.com/gif.latex?X&space;\sim&space;N(\mu&space;,&space;\sigma&space;^{2})&space;\rightarrow&space;Z=\frac{x-\mu&space;}{\sigma&space;}:Z\sim&space;N(0&space;,&space;1))
 
 ## Probability
-Probability and statistics
+* Probability and statistics
     * Rule of probability:
         * for non-mutually exclusive events: ![equation](https://latex.codecogs.com/gif.latex?P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)-P(A\cap&space;B))
     * Permutations: order matters
