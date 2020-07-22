@@ -104,6 +104,13 @@ A probability sample is a sample in which every unit in the population has a cha
         sns.pairplot(df)
         ```
 ## Normal Distribution and Central Limit Theorem
+### Types of Distributions
+* normal distribution
+* binomial distribution
+* Poisson distribution
+* t distribution
+* chi-square distribution
+* F distribution
 ### Normal distribution
 * What is normal distribution?
     * ![equation](https://latex.codecogs.com/gif.latex?Normal&space;Distribution:&space;X&space;~&space;N(\mu&space;,&space;\sigma&space;^{2}))
@@ -404,11 +411,53 @@ Mathematically speaking, any neural network architecture aims at finding any mat
         * Ha: B is better than A (Difference has a causation)
     * Evaluation Metric
 
-### Bagging
+### Ensemble
+multiple models are trained using same learning algorithm. Bagging is to drecrease variance in the prediction by generating additonal data for training from dataset using combinations with repetitions to produce multi-sets of original data. Boosting is an iterative technique which adjusts the weight of an observation based on the last classification. If an observation was classified incorrectly, it tries to increase the weight of this observation. Boosting general builds strong predictive models. The main principle behind the ensemble model is that a group of weak learners come together to form a strong learner, thus increasing the accuracy of the model.
 
+### Bagging
+* What is bagging?
+
+Partitioning of data	                  Random
+Goal to achieve	                     Minimum variance
+Methods used	                        Random subspace
+Functions to combine single model	   Weighted average
+Example 	                              Random Forest
+
+* Bagging Steps:n random selected subsets trained t times
+
+   1. Suppose there are N observations and M features in training data set. A sample from training data set is taken randomly with replacement.
+   2. A subset of M features are selected randomly and whichever feature gives the best split is used to split the node iteratively.
+   3. The tree is grown to the largest.
+   4. Above steps are repeated n times and prediction is given based on the aggregation of predictions from n number of trees.
+
+* Advantage:
+   1. reduce overfitting
+   2. handle high dimension data well
+   3. maintain accuracy of missing data
+ 
+* Disadvantage:
+
+Since final prediction is based on the mean predictions from subset trees, it won’t give precise values for the classification and regression model.
 
 ### Boosting
+* What is boosting?
+Partitioning of data	               Higher vote to misclassified samples
+Goal to achieve	                  Increase accuracy
+Methods used	                     Gradient descent
+Functions to combine single model   Weighted majority vote 
+Example 	                           Ada Boost
 
+   1. Draw a random subset of training samples d1 without replacement from the training set D to train a weak learner C1
+   2. Draw second random training subset d2 without replacement from the training set and add 50 percent of the samples that were previously falsely classified/misclassified to train a weak learner C2
+   3. Find the training samples d3 in the training set D on which C1 and C2 disagree to train a third weak learner C3
+   4. Combine all the weak learners via majority voting.
+
+* Advantages
+   * Supports different loss function (we have used ‘binary:logistic’ for this example).
+   * Works well with interactions.
+* Disadvantages
+   * Prone to over-fitting.
+   * Requires careful tuning of different hyper-parameters.
 ### Clustering
 * K-means clustering
     * How?
