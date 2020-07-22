@@ -268,7 +268,7 @@ The output of multiple decision tree classifiers
     * ROC
         * ROC: Receiver Operating Characteristics
         * goodness of model in distinguishing two classes
-        * TPR vs. FPR (Recall vs. 1 - Precision)
+        * TPR vs. FPR 
     * AUC (Area under the curve)
         * Created using different thresholds in classifier to get TPR and FPR
 
