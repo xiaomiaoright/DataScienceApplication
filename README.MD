@@ -642,4 +642,21 @@ NLP in businesses
     * The context is samples from the max window size with a probability of 1/d where d is the distance between the word to target. 
 ### Reinforcement Learning
 
-# Big Data
+# Data Science Application in Retail
+1. Recommendation engines
+2. Market basket analysis
+3. Warranty analytics
+4. Price optimization
+5. Inventory management
+6. Location of new stores
+7. Customer sentiment analysis
+8. Merchandising
+9. Lifetime value prediction
+10. Fraud detection
+
+Data science seeks its implementation in various sphere of human life. The companies implement different models of data analysis to enhance the customers' shopping experiences. In this regard, all the transactions, e-mails, and search inquiries, previous purchases, etc. are analyzed and processed to optimize the marketing moves and merchandising processes.
+
+## Recommendation systems
+
+shopping trends 
+Frequently bought together
