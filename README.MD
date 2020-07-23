@@ -656,7 +656,20 @@ NLP in businesses
 
 Data science seeks its implementation in various sphere of human life. The companies implement different models of data analysis to enhance the customers' shopping experiences. In this regard, all the transactions, e-mails, and search inquiries, previous purchases, etc. are analyzed and processed to optimize the marketing moves and merchandising processes.
 
-## Recommendation systems
+## Data Science Application in Insurance Industry
+- Fraude detection
+- Price optimization
+- Personalized marketing
+- Customer segmentation
+- Lifetime value prediction
+- Recommendation engines
+- Risk Management
+- Claims prediction
+- Automating life-event marketing
 
+## Recommendation systems
+### Why important?
+1. Information overload
+2. Make selections easier
 shopping trends 
 Frequently bought together
